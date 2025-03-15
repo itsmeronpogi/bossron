@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Neon Love Button</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Neon Button */
+        .neon-button {
+            font-size: 24px;
+            padding: 15px 50px;
+            color: #fff;
+            background: none;
+            border: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            font-weight: bold;
+            letter-spacing: 3px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .neon-button::before,
+        .neon-button::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: 4px solid transparent;
+            animation: snake-lights 1.5s linear infinite, color-cycle 2s infinite;
+        }
+
+        .neon-button::after {
+            animation-delay: 0.75s;
+        }
+
+        /* Moving neon border effect */
+        @keyframes snake-lights {
+            0% { clip-path: inset(0 100% 0 0); }
+            25% { clip-path: inset(0 0 0 75%); }
+            50% { clip-path: inset(75% 0 0 0); }
+            75% { clip-path: inset(0 0 75% 0); }
+            100% { clip-path: inset(0 100% 0 0); }
+        }
+
+        /* Color-changing glow effect */
+        @keyframes color-cycle {
+            0% { box-shadow: 0 0 15px red, 0 0 30px red, 0 0 60px red; border-color: red; }
+            20% { box-shadow: 0 0 15px orange, 0 0 30px orange, 0 0 60px orange; border-color: orange; }
+            40% { box-shadow: 0 0 15px yellow, 0 0 30px yellow, 0 0 60px yellow; border-color: yellow; }
+            60% { box-shadow: 0 0 15px pink, 0 0 30px pink, 0 0 60px pink; border-color: pink; }
+            80% { box-shadow: 0 0 15px purple, 0 0 30px purple, 0 0 60px purple; border-color: purple; }
+            100% { box-shadow: 0 0 15px red, 0 0 30px red, 0 0 60px red; border-color: red; }
+        }
+
+        .neon-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Romantic Love Message */
+        .love-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 15px red, 0 0 30px pink, 0 0 45px magenta, 0 0 60px purple;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-top: 20px;
+            position: relative;
+            animation: flicker 2s infinite alternate;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        /* Flickering love text effect */
+        @keyframes flicker {
+            0% { text-shadow: 0 0 10px red, 0 0 20px pink, 0 0 30px magenta; }
+            50% { text-shadow: 0 0 15px red, 0 0 30px pink, 0 0 45px magenta, 0 0 60px purple; }
+            100% { text-shadow: 0 0 5px red, 0 0 10px pink, 0 0 15px magenta; }
+        }
+
+        /* Floating hearts animation */
+        .hearts {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            opacity: 0;
+            animation: float-hearts 3s infinite;
+        }
+
+        @keyframes float-hearts {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        .heart:nth-child(1) { left: -30px; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 0px; animation-delay: 0.5s; }
+        .heart:nth-child(3) { left: 30px; animation-delay: 1s; }
+        .heart:nth-child(4) { left: -60px; animation-delay: 1.5s; }
+        .heart:nth-child(5) { left: 60px; animation-delay: 2s; }
+
+    </style>
+    <script>
+        function showLove() {
+            document.getElementById("loveMessage").classList.add("show");
+            document.getElementById("hearts").style.display = "block";
+            document.getElementById("loveButton").style.display = "none"; // Hide button
+        }
+    </script>
+</head>
+<body>
+
+    <button id="loveButton" class="neon-button" onclick="showLove()">Click Me</button>
+    
+    <div id="loveMessage" class="love-text">TANG INA MO❤️</div>
+    
+    <div id="hearts" class="hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">💗</div>
+        <div class="heart">💘</div>
+        <div class="heart">💞</div>
+    </div>
+
+</body>
+</html>
